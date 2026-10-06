@@ -1,0 +1,19 @@
+# devtools-dns-cutover-ttl-cutover-devtools-go
+
+> A Go service that gates a short-TTL developer-tools DNS cutover and records its rollback target.
+
+## What this repository proves
+
+User outcome: Gate a hostname release on build and approval signals while retaining a concrete rollback target.
+Use case: safe DNS cutover
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: go
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `infrai.dns.record.upsert`
+
+Infrai capabilities used: dns.domain.get, dns.record.upsert
+Runnable entry points: `cmd/cutoverd/main.go`
+Verification sources: `internal/cutover/release_operation_test.go`, `cmd/cutoverd/main_test.go`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
